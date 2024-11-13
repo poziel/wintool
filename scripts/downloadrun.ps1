@@ -23,7 +23,7 @@ function downloadrun {
         [string]$match = "*.exe",       # Optional. Specifies a pattern to match the executable name in the GitHub release if there are multiple `.exe` assets
         [string]$args = "",             # Optional. A string of arguments to pass to the executable upon execution
         [bool]$cleanup = $true,         # Optional. If true, deletes the program folder after execution
-        [bool]$wait = $false,           # Optional. If true, waits for user input before exiting
+        [bool]$wait = $false            # Optional. If true, waits for user input before exiting
     )
 
     # Validate URL
