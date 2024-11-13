@@ -12,7 +12,7 @@ function downloadrun {
     Downloads `specificfile.exe` from the latest release of the specified GitHub repo, stores it in "C:\CustomTemp\MyApp", and executes it.
 
     .EXAMPLE
-    & ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/downloadrun.ps1").Content)) @params
+    & ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/scripts/downloadrun.ps1").Content)) @params
     Calls the `downloadrun` script remotely with parameters stored in the `@params` hashtable.
     #>
 
@@ -127,7 +127,7 @@ function downloadrun {
     Downloads `specificfile.exe` from the latest release of the specified GitHub repo, stores it in "C:\CustomTemp\MyApp", and executes it.
 
     .EXAMPLE
-    & ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/downloadrun.ps1").Content)) @params
+    & ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/scripts/downloadrun.ps1").Content)) @params
     Calls the `downloadrun` script remotely with parameters stored in the `@params` hashtable.
     #>
 
@@ -223,5 +223,12 @@ function downloadrun {
     }
     finally {
         $ErrorActionPreference = "Continue"
+    }
+
+    # Wait at the end if requested
+    if ($wait) {
+        Write-Output "Press Enter to exit..."
+        Read-Host
+        return
     }
 }
