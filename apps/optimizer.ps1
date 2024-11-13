@@ -25,11 +25,10 @@
 # Optimizer is especially useful for users who value privacy and performance, providing an all-in-one tool 
 # to configure and streamline Windows without needing manual tweaks in multiple locations.
 
-# Define the URL for the online DownloadRun script
-$downloadRunUrl = "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/DownloadRun.ps1"
+# Define parameters to pass as a hashtable (flexible to add/remove parameters)
+$params = @{
+    url = "https://github.com/hellzerg/optimizer"
+}
 
-# Download and execute the script from the URL
-Invoke-Expression -Command (Invoke-WebRequest -Uri $downloadRunUrl).Content
-
-# Call the function with specific parameters for this app
-DownloadRun -url "https://github.com/hellzerg/optimizer" -name "Optimizer"
+# Download, create, and execute the script block with parameters
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/downloadrun.ps1").Content)) @params

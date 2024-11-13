@@ -23,11 +23,10 @@
 # EnvyUpdate provides a convenient and streamlined way for users to manage NVIDIA driver updates,
 # ideal for gamers and professionals who want to ensure optimal GPU performance with minimal manual effort.
 
-# Define the URL for the online DownloadRun script
-$downloadRunUrl = "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/DownloadRun.ps1"
+# Define parameters to pass as a hashtable (flexible to add/remove parameters)
+$params = @{
+    url = "https://github.com/fyr77/EnvyUpdate"
+}
 
-# Download and execute the script from the URL
-Invoke-Expression -Command (Invoke-WebRequest -Uri $downloadRunUrl).Content
-
-# Call the function with specific parameters for this app
-DownloadRun -url "https://github.com/fyr77/EnvyUpdate" -name "EnvyUpdate"
+# Download, create, and execute the script block with parameters
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/downloadrun.ps1").Content)) @params
