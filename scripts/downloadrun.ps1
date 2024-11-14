@@ -16,14 +16,14 @@ Calls the `downloadrun` script remotely with parameters stored in the `@params` 
 #>
 
 param (
-    [string]$url,                   # The URL of the file or GitHub repository in the format "owner/repo"
-    [string]$name = $null,          # Optional. Specifies the name for the executable folder. Defaults to the downloaded file name if omitted
-    [string]$tmp = "`$tmp",         # Optional. Specifies a temporary folder to store the downloaded executable. Defaults to the system temporary folder
-    [string]$match = "*",           # Optional. Specifies a pattern to match the file on the GitHub page or URL
-    [string]$app = "*",             # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
-    [string]$arg = $null,           # Optional. A string of arguments to pass to the executable upon execution
-    [bool]$cleanup = $true,         # Optional. If true, deletes the program folder after execution
-    [bool]$wait = $false            # Optional. If true, waits for user input before exiting
+    [string]$url,                       # The URL of the file or GitHub repository in the format "owner/repo"
+    [string]$name = $null,              # Optional. Specifies the name for the executable folder. Defaults to the downloaded file name if omitted
+    [string]$tmp = "$env:TEMP\`$tmp",   # Optional. Specifies a temporary folder to store the downloaded executable. Defaults to the system temporary folder
+    [string]$match = "*",               # Optional. Specifies a pattern to match the file on the GitHub page or URL
+    [string]$app = "*",                 # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
+    [string]$arg = $null,               # Optional. A string of arguments to pass to the executable upon execution
+    [bool]$cleanup = $true,             # Optional. If true, deletes the program folder after execution
+    [bool]$wait = $false                # Optional. If true, waits for user input before exiting
 )
 
 function ExtractFiles {
