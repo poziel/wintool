@@ -22,11 +22,10 @@
 # and limiting tracking features, without complex configurations.
 
 # To create a shortcut for xd-AntiSpy by Builtbybel, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Builtbybel - xd-AntiSpy.lnk")); $shortcut.TargetPath = "$env:windir\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/xdantispy.ps1 | iex'`""; $shortcut.WorkingDirectory = "$env:windir\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "xd-AntiSpy by Builtbybel helps users disable telemetry and tracking features on Windows for improved privacy."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Builtbybel - xd-AntiSpy.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/xdantispy.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "xd-AntiSpy by Builtbybel helps users disable telemetry and tracking features on Windows for improved privacy."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    Wait = $true
     Url             = "https://github.com/builtbybel/xd-AntiSpy"
     GithubMatch     = "xd-AntiSpy.zip"
     ArchiveApp      = "xd-AntiSpy.exe"
