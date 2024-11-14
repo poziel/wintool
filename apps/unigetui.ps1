@@ -26,6 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = "https://github.com/marticliment/UniGetUI"
     GithubMatch     = "UniGetUI.Installer"
     AppArgs         = '/CURRENTUSER /VERYSILENT /PORTABLE /DIR="{installdir}\UniGetUI_Portable"'

@@ -27,6 +27,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = "https://dl5.oo-software.com/files/ooappbuster/OOAPB.exe"
 }
 

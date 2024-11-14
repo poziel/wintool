@@ -26,6 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = "https://sourceforge.net/projects/crystaldiskinfo/files/latest/download"
     Name            = "crystaldiskinfo\crystaldiskinfo.zip"
     ArchiveApp      = "DiskInfo64.exe"

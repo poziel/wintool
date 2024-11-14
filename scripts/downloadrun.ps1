@@ -20,7 +20,7 @@ param (
     [string]$Name = $null,              # Optional. Specifies the name for the executable folder. Defaults to the downloaded file name if omitted
     [string]$Tmp = "$env:TEMP\`$tmp",   # Optional. Specifies a temporary folder to store the downloaded executable. Defaults to the system temporary folder
     [string]$GithubMatch = "*",         # Optional. Specifies a pattern to match the file on the GitHub page or URL
-    [string]$ArchiveArchiveApp ="*",          # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
+    [string]$ArchiveArchiveApp ="*",    # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
     [string]$AppArgs = $null,           # Optional. A string of arguments to pass to the executable upon execution
     [switch]$AppAdmin                   # Optional. If specified, starts the program with administrator privileges
     [switch]$NoCleanup,                 # Optional. If specified, don't deletes the program folder after execution

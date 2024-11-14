@@ -29,6 +29,7 @@ $Url = & ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubuserc
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = $url
     Admin           = $true
 }

@@ -26,6 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = "https://download.sysinternals.com/files/ProcessMonitor.zip"
     ArchiveApp      = "Procmon.exe"
 }

@@ -26,6 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
+    Wait = $true
     Url             = "https://sourceforge.net/projects/hwinfo/files/latest/download"
     Name            = "HWiNFO64\HWiNFO64.zip"
     ArchiveApp      = "HWiNFO64.exe"
