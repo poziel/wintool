@@ -1,28 +1,28 @@
-# O&O ShutUp10++ is a free Windows privacy tool designed to give users control over their data privacy 
-# and security settings on Windows 10 and Windows 11. It provides a centralized interface for disabling 
-# built-in telemetry, data collection, and other settings that may compromise user privacy.
+# O&O ShutUp10++ is a privacy-focused utility for Windows that allows users to control and disable 
+# telemetry, tracking, and data-sharing features in Windows 10 and Windows 11, enhancing user privacy.
 
 # Key Features:
-# - Allows disabling of telemetry, diagnostics, and location tracking features that collect user data.
-# - Provides options to control app permissions, Windows updates, Cortana, OneDrive integration, and 
-#   personalized advertising.
-# - Helps configure privacy-related security settings, such as password reveal buttons and feedback prompts.
-# - Offers pre-configured recommendations for settings based on privacy levels (e.g., Basic, Recommended, Full Privacy).
-# - Allows users to create restore points, so changes can be easily undone if necessary.
+# - Provides granular options to disable Windows telemetry, data collection, and personalized ads.
+# - Allows users to turn off location tracking, feedback requests, and activity history.
+# - Offers a one-click “Recommended Settings” option for quick privacy setup.
+# - Allows for easy rollback of changes to restore default settings if needed.
+# - Completely portable, requiring no installation and making it easy to use on multiple systems.
 
 # Usage Example:
-# - Running O&O ShutUp10++ presents users with a list of privacy-related settings, each with a clear description 
-#   and recommended status.
-# - Users can apply all recommended settings in one go or selectively enable/disable individual options to match 
-#   their desired privacy level.
+# - Running O&O ShutUp10++ allows users to select recommended privacy settings:
+#   OOSU10 -ApplyRecommended
+# - Here, '-ApplyRecommended' applies a set of suggested privacy configurations.
 
 # Typical Workflow:
-# 1. O&O ShutUp10++ scans the system and provides a list of privacy and security settings, categorized by function.
-# 2. Users review each setting and select which ones to apply, following the built-in recommendations if desired.
-# 3. The tool applies the changes, enhancing system privacy, with the option to revert any setting later.
+# 1. O&O ShutUp10++ scans the system and presents a list of privacy settings that can be adjusted.
+# 2. Users choose to enable or disable specific settings or apply recommended defaults.
+# 3. The tool applies changes, which can be reversed if needed for flexibility.
 
-# O&O ShutUp10++ is an ideal tool for users who value privacy and want granular control over Windows data collection 
-# and telemetry features, making it easier to protect personal data without needing to navigate complex system settings.
+# O&O ShutUp10++ is an essential tool for privacy-conscious users who want to control data-sharing 
+# and tracking features on Windows systems without complex configurations.
+
+# To create a shortcut for O&O ShutUp10++, execute the following line in PowerShell:
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "O&O - ShutUp10++.lnk")); $shortcut.TargetPath = "$env:windir\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/oosu10.ps1 | iex'`""; $shortcut.WorkingDirectory = "$env:windir\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "O&O ShutUp10++ is a privacy tool for Windows that disables telemetry and tracking features to protect user privacy."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{

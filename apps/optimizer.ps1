@@ -1,29 +1,28 @@
-# Optimizer by hellzerg is an open-source tool designed to enhance Windows performance, privacy, and security.
-# It allows users to disable unnecessary services, remove pre-installed bloatware, and optimize various
-# system settings for a faster and more private Windows experience.
+# Optimizer by Hellzerg is a versatile tool for optimizing Windows systems, providing options to 
+# disable unnecessary services, remove bloatware, improve performance, and enhance user privacy.
 
 # Key Features:
-# - Disables Windows services that aren’t essential to improve performance and free up system resources.
-# - Provides privacy enhancements by disabling telemetry, background data collection, and tracking features
-#   inherent in Windows.
-# - Removes unwanted applications and pre-installed bloatware to streamline the system.
-# - Offers a series of optimization tweaks for network, system, and Windows Explorer settings.
-# - Includes additional tools like a Hosts file editor and support for bulk application installation and removal.
+# - Disables telemetry, data collection, and other background services that may impact privacy.
+# - Removes pre-installed Windows apps and bloatware to free up system resources.
+# - Configures system settings for performance improvements, including disabling animations and startup delays.
+# - Offers a built-in firewall management tool to restrict unwanted connections.
+# - Portable and open-source, making it easy to customize and use on multiple systems.
 
 # Usage Example:
-# - Running Optimizer after a fresh installation of Windows can help secure privacy, reduce background
-#   resource usage, and improve overall system responsiveness.
-# - Options can typically be selected from a user-friendly interface, making it accessible even for those
-#   unfamiliar with advanced Windows settings.
+# - Running Optimizer allows users to select from various optimization options:
+#   Optimizer -DisableTelemetry -RemoveBloat
+# - Here, '-DisableTelemetry' disables data collection, while '-RemoveBloat' removes pre-installed apps.
 
 # Typical Workflow:
-# 1. Optimizer scans the system to detect active services, pre-installed apps, and telemetry features.
-# 2. Users choose to disable or optimize specific items based on their needs (e.g., disabling telemetry,
-#    stopping background services, or removing apps).
-# 3. The tool applies the selected optimizations, which may require a system restart to fully take effect.
+# 1. Optimizer scans the system and lists available options for privacy, performance, and bloatware removal.
+# 2. Users select the tasks they wish to perform, such as disabling telemetry or optimizing settings.
+# 3. The tool applies the selected changes, resulting in a leaner and more privacy-conscious setup.
 
-# Optimizer is especially useful for users who value privacy and performance, providing an all-in-one tool 
-# to configure and streamline Windows without needing manual tweaks in multiple locations.
+# Optimizer by Hellzerg is ideal for users looking for a one-stop tool to enhance system performance 
+# and privacy on Windows with minimal configuration.
+
+# To create a shortcut for Optimizer by Hellzerg, execute the following line in PowerShell:
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Hellzerg - Optimizer.lnk")); $shortcut.TargetPath = "$env:windir\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/optimizer.ps1 | iex'`""; $shortcut.WorkingDirectory = "$env:windir\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Optimizer by Hellzerg is a tool for enhancing Windows privacy, removing bloatware, and optimizing performance."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{

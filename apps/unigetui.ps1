@@ -1,39 +1,34 @@
-# UniGetUI is an open-source graphical user interface (GUI) tool for Windows, designed to manage multiple 
-# command-line package managers in a single, unified interface. It simplifies the process of installing, 
-# updating, and uninstalling software across different package managers, including Winget, Chocolatey, Scoop, 
-# Pip, Npm, and .NET Tool.
+# UniGetUI is a user interface for the UniGet package manager, allowing users to find, install, and manage 
+# software packages on Windows in a simplified, visual environment.
 
 # Key Features:
-# - Unified Package Management: Provides a single interface to interact with multiple package managers, 
-#   making it easy to manage software from various sources.
-# - Bulk Operations: Supports batch installation, updating, and removal of packages, saving time and effort.
-# - Detailed Package Information: Displays metadata such as download URLs, publisher information, and file 
-#   sizes for each package.
-# - Customization: Offers options to customize installation parameters, including version selection and 
-#   architecture choices.
-# - Export and Import: Enables exporting lists of installed packages, facilitating setup on new machines or 
-#   for backup purposes.
-# - Auto-Updater: Keeps both UniGetUI and managed packages up to date automatically.
+# - Provides an intuitive UI for browsing and installing software packages available through UniGet.
+# - Supports multiple package sources, ensuring access to a wide variety of software.
+# - Allows users to manage installed software, including updating and uninstalling packages as needed.
+# - Offers search functionality to quickly locate specific applications.
+# - Simplifies package management for users who prefer a graphical interface over command-line operations.
 
 # Usage Example:
-# - UniGetUI can be installed via Winget with the command:
-#   winget install --id SomePythonThings.WingetUIStore --source winget
-# - After installation, UniGetUI’s interface allows users to manage software from all supported package 
-#   managers, combining package management tasks into a single, easy-to-navigate application.
+# - Running UniGetUI launches a graphical interface for interacting with the UniGet package manager:
+#   UniGetUI -Launch
+# - Here, '-Launch' opens the interface, where users can browse and install packages.
 
-# Recent Developments:
-# - Originally called WingetUI, the project was renamed to UniGetUI in early 2024 to better reflect its 
-#   expanded support for multiple package managers. The latest release includes improvements such as enhanced 
-#   troubleshooting for Winget and optimized handling of package operations.
+# Typical Workflow:
+# 1. Users open UniGetUI to access the UniGet package manager in a graphical interface.
+# 2. They search for, select, and install packages directly from the UI.
+# 3. UniGetUI handles the installation process, tracking packages for easy updates and removal.
 
-# UniGetUI is ideal for users who want centralized control over software management on Windows, providing 
-# a comprehensive tool to streamline the use of multiple package managers.
+# UniGetUI is perfect for users who want the functionality of UniGet with the convenience of a graphical interface, 
+# making it easy to manage software packages on Windows.
+
+# To create a shortcut for UniGetUI, execute the following line in PowerShell:
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "UniGetUI.lnk")); $shortcut.TargetPath = "$env:windir\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/unigetui.ps1 | iex'`""; $shortcut.WorkingDirectory = "$env:windir\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "UniGetUI provides a user-friendly interface for managing software packages with UniGet."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
     url = "https://github.com/marticliment/UniGetUI"
-    match = "UniGetUI.Installer.exe"
-    args = '/PORTABLE /DIR="$env:TEMP\UniGetUI_Portable"'
+    match = "UniGetUI.Installer"
+    arg = '/CURRENTUSER /VERYSILENT /PORTABLE /DIR="{installdir}\UniGetUI_Portable"'
 }
 
 # Download, create, and execute the script block with parameters
