@@ -26,9 +26,9 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://sourceforge.net/projects/crystaldiskmark/files/latest/download"
-    name = "crystaldiskmark\crystaldiskmark.zip"
-    app = "DiskMark64.exe"
+    Url             = "https://sourceforge.net/projects/crystaldiskmark/files/latest/download"
+    Name            = "crystaldiskmark\crystaldiskmark.zip"
+    ArchiveApp      = "DiskMark64.exe"
 }
 
 # Download, create, and execute the script block with parameters

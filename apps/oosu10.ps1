@@ -26,7 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
+    Url             = "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 }
 
 # Download, create, and execute the script block with parameters

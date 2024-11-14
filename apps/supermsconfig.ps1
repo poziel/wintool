@@ -26,8 +26,8 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://github.com/builtbybel/SuperMSConfig"
-    match = "SuperMSConfig"
+    Url             = "https://github.com/builtbybel/SuperMSConfig"
+    GithubMatch     = "SuperMSConfig"
 }
 
 # Download, create, and execute the script block with parameters

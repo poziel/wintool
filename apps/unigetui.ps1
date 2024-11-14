@@ -26,9 +26,9 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://github.com/marticliment/UniGetUI"
-    match = "UniGetUI.Installer"
-    arg = '/CURRENTUSER /VERYSILENT /PORTABLE /DIR="{installdir}\UniGetUI_Portable"'
+    Url             = "https://github.com/marticliment/UniGetUI"
+    GithubMatch     = "UniGetUI.Installer"
+    AppArgs         = '/CURRENTUSER /VERYSILENT /PORTABLE /DIR="{installdir}\UniGetUI_Portable"'
 }
 
 # Download, create, and execute the script block with parameters

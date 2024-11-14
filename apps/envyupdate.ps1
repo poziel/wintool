@@ -28,7 +28,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://github.com/fyr77/EnvyUpdate"
+    Url             = "https://github.com/fyr77/EnvyUpdate"
 }
 
 # Download, create, and execute the script block with parameters

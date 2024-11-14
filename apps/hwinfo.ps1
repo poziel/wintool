@@ -26,9 +26,9 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://sourceforge.net/projects/hwinfo/files/latest/download"
-    name = "HWiNFO64\HWiNFO64.zip"
-    app = "HWiNFO64.exe"
+    Url             = "https://sourceforge.net/projects/hwinfo/files/latest/download"
+    Name            = "HWiNFO64\HWiNFO64.zip"
+    ArchiveApp      = "HWiNFO64.exe"
 }
 
 # Download, create, and execute the script block with parameters

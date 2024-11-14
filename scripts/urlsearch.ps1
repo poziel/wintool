@@ -1,6 +1,6 @@
 param (
-    [string]$url,
-    [string]$text
+    [string]$Url,
+    [string]$Text
 )
 
 # Download HTML content from the provided URL

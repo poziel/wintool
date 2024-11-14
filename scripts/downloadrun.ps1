@@ -16,14 +16,15 @@ Calls the `downloadrun` script remotely with parameters stored in the `@params` 
 #>
 
 param (
-    [string]$url,                       # The URL of the file or GitHub repository in the format "owner/repo"
-    [string]$name = $null,              # Optional. Specifies the name for the executable folder. Defaults to the downloaded file name if omitted
-    [string]$tmp = "$env:TEMP\`$tmp",   # Optional. Specifies a temporary folder to store the downloaded executable. Defaults to the system temporary folder
-    [string]$match = "*",               # Optional. Specifies a pattern to match the file on the GitHub page or URL
-    [string]$app = "*",                 # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
-    [string]$arg = $null,               # Optional. A string of arguments to pass to the executable upon execution
-    [bool]$cleanup = $true,             # Optional. If true, deletes the program folder after execution
-    [bool]$wait = $false                # Optional. If true, waits for user input before exiting
+    [string]$Url,                       # The URL of the file or GitHub repository in the format "owner/repo"
+    [string]$Name = $null,              # Optional. Specifies the name for the executable folder. Defaults to the downloaded file name if omitted
+    [string]$Tmp = "$env:TEMP\`$tmp",   # Optional. Specifies a temporary folder to store the downloaded executable. Defaults to the system temporary folder
+    [string]$GithubMatch = "*",         # Optional. Specifies a pattern to match the file on the GitHub page or URL
+    [string]$ArchiveArchiveApp ="*",          # Optional. Specifies the name of the file to execute within the archive. Defaults to the first `.exe` file found
+    [string]$AppArgs = $null,           # Optional. A string of arguments to pass to the executable upon execution
+    [switch]$AppAdmin                   # Optional. If specified, starts the program with administrator privileges
+    [switch]$NoCleanup,                 # Optional. If specified, don't deletes the program folder after execution
+    [switch]$Wait,                      # Optional. If specified, waits for user input before exiting
 )
 
 function ExtractFiles {
@@ -82,29 +83,29 @@ $timestamp = [math]::Round((New-TimeSpan -Start (Get-Date -Date "1970-01-01 00:0
 $uuid = [guid]::NewGuid().ToString()
 
 # Validate URL
-if (-not $url) {
+if (-not $Url) {
     Write-Output "Error: The 'url' parameter is required."
     return
 }
 
 # Check if the temp folder exists; create it if necessary
-if (!(Test-Path -Path $tmp)) {
+if (!(Test-Path -Path $Tmp)) {
     # Create the folder
-    New-Item -ItemType Directory -Path $tmp -Force | Out-Null
+    New-Item -ItemType Directory -Path $Tmp -Force | Out-Null
     
     # Set the folder attribute to 'Hidden'
-    (Get-Item -Path $tmp).Attributes = 'Hidden'
+    (Get-Item -Path $Tmp).Attributes = 'Hidden'
 }
 
 # Replace custom variables in the arguments
-$tmp = $tmp -replace "\{tmp\}", [regex]::Escape($env:TEMP)
-$tmp = $tmp -replace "\{timestamp\}", [regex]::Escape($timestamp)
-$tmp = $tmp -replace "\{uuid\}", [regex]::Escape($uuid)
+$Tmp = $Tmp -replace "\{tmp\}", [regex]::Escape($env:TEMP)
+$Tmp = $Tmp -replace "\{timestamp\}", [regex]::Escape($timestamp)
+$Tmp = $Tmp -replace "\{uuid\}", [regex]::Escape($uuid)
 
 # Set error handling
 try {
     # Check if the URL points to a GitHub repository or a direct URL
-    if ($url -match "^https://github\.com/([^/]+)/([^/]+)") {
+    if ($Url -match "^https://github\.com/([^/]+)/([^/]+)") {
         $repoOwner = $matches[1]
         $repoName = $matches[2]
         $apiUrl = "https://api.github.com/repos/$repoOwner/$repoName/releases/latest"
@@ -114,9 +115,9 @@ try {
         $response = Invoke-RestMethod -Uri $apiUrl -Headers @{ "User-Agent" = "PowerShell" }
 
         # Filter assets based on the 'match' pattern for GitHub
-        $asset = $response.assets | Where-Object { $_.name -match "^$match(\..+)?$" } | Select-Object -First 1
+        $asset = $response.assets | Where-Object { $_.name -match "^$GithubMatch(\..+)?$" } | Select-Object -First 1
         if ($null -eq $asset) {
-            Write-Output "No file matching '$match' found in the latest release for $repoOwner/$repoName. Exiting."
+            Write-Output "No file matching '$GithubMatch' found in the latest release for $repoOwner/$repoName. Exiting."
             return
         }
 
@@ -125,31 +126,71 @@ try {
 
     } else {
         # Assume it's a direct URL
-        $downloadUrl = $url
+        $downloadUrl = $Url
         Write-Output "Using provided URL: $downloadUrl"
     }
 
-    # Set the app folder name based on the provided `name` or derive from the download URL
-    if (-not $name) {
-        $name = ([System.IO.Path]::GetFileNameWithoutExtension($downloadUrl) -replace '[^a-zA-Z0-9]', '')
-    }
-    $name = $name -replace "\{timestamp\}", [regex]::Escape($timestamp)
-    $name = $name -replace "\{uuid\}", [regex]::Escape($uuid)
+    # # Set the app folder name based on the provided `name` or derive from the download URL
+    # if (-not $Name) {
+    #     $Name = ([System.IO.Path]::GetFileNameWithoutExtension($downloadUrl) -replace '[^a-zA-Z0-9]', '')
+    # }
+    # $Name = $Name -replace "\{timestamp\}", [regex]::Escape($timestamp)
+    # $Name = $Name -replace "\{uuid\}", [regex]::Escape($uuid)
 
+    # # Define the folder and path for the executable
+    # $appFolder = Join-Path -Path $Tmp -ChildPath $Name
+    # $appPath = Join-Path -Path $appFolder -ChildPath ([System.IO.Path]::GetFileName($downloadUrl))
+
+    # Parse `$ArchiveApp` to determine folder and file names
+    if ($Name -match "\\|/") {
+        # If `$Name` includes a path (e.g., "hwinfo\latest" or "hwinfo\app.zip")
+        $folderName = Split-Path -Path $Name -Parent
+        $fileName = Split-Path -Path $Name -Leaf
+    } else {
+        # If `$Name` only specifies a name without path separators
+        $folderName = $null
+        $fileName = $Name
+    }
+
+    # Set folder name based on `$Name` or fallback to calculated name from `$downloadUrl`
+    if ($folderName) {
+        $Name = $folderName
+    } elseif (-not $Name) {
+        $Name = ([System.IO.Path]::GetFileNameWithoutExtension($downloadUrl) -replace '[^a-zA-Z0-9]', '')
+    }
+
+    # Apply replacements for `{timestamp}` and `{uuid}` in `$Name` if they exist
+    $Name = $Name -replace "\{timestamp\}", [regex]::Escape($timestamp)
+    $Name = $Name -replace "\{uuid\}", [regex]::Escape($uuid)
+
+    # Define `$appFolder` and `$appPath`
+    $appFolder = Join-Path -Path $Tmp -ChildPath $Name
+
+    # Set file name based on `$fileName` or fallback to default from `$downloadUrl`
+    Write-Output "File name: $fileName"
+    if ($fileName -and $fileName -ne "*") {
+        if ($fileName -like "*.") {
+            # If `$fileName` ends with `.*`, retain the original file extension from the download URL
+            $defaultExtension = [System.IO.Path]::GetExtension($downloadUrl)
+            $appPath = Join-Path -Path $appFolder -ChildPath ($fileName.TrimEnd('.') + $defaultExtension)
+        } else {
+            # Use `$fileName` as-is
+            $appPath = Join-Path -Path $appFolder -ChildPath $fileName
+        }
+    } else {
+        # Default to the original downloaded file name
+        $appPath = Join-Path -Path $appFolder -ChildPath ([System.IO.Path]::GetFileName($downloadUrl))
+    }
 
     # Log the application name at the top of the script
     $length = 100 
-    $padding = [Math]::Max(0, ($length - $name.Length) / 2)
-    $centeredName = (' ' * [Math]::Floor($padding)) + $name + (' ' * [Math]::Ceiling($padding))
+    $padding = [Math]::Max(0, ($length - $Name.Length) / 2)
+    $centeredName = (' ' * [Math]::Floor($padding)) + $Name + (' ' * [Math]::Ceiling($padding))
     Write-Output ""
     Write-Output ('-' * $length)
     Write-Output $centeredName
     Write-Output ('-' * $length)
     Write-Output ""
-
-    # Define the folder and path for the executable
-    $appFolder = Join-Path -Path $tmp -ChildPath $name
-    $appPath = Join-Path -Path $appFolder -ChildPath ([System.IO.Path]::GetFileName($downloadUrl))
 
     # Delete the existing folder if it exists then create a new folder
     if (Test-Path -Path $appFolder) {
@@ -166,16 +207,16 @@ try {
     if ($appPath -match "\.zip$") {
         ExtractFiles -Source $appPath -Destination $appFolder
 
-        # Determine file to execute based on `$app`
-        if ($app -ne "*") {
-            # If `$app` is specified, find the specified file recursively in the uncompressed folder
-            $targetFile = Get-ChildItem -Path $appFolder -Recurse -Filter $app | Select-Object -First 1
+        # Determine file to execute based on `$ArchiveApp`
+        if ($ArchiveApp -ne "*") {
+            # If `$ArchiveApp` is specified, find the specified file recursively in the uncompressed folder
+            $targetFile = Get-ChildItem -Path $appFolder -Recurse -Filter $ArchiveApp | Select-Object -First 1
             if (-not $targetFile) {
-                Write-Error "No file matching '$app' was found in the extracted files."
+                Write-Error "No file matching '$ArchiveApp' was found in the extracted files."
                 return
             }
         } else {
-            # If `$app` is not specified, find the first executable file (.exe)
+            # If `$ArchiveApp` is not specified, find the first executable file (.exe)
             $targetFile = Get-ChildItem -Path $appFolder -Recurse -Filter "*.exe" | Select-Object -First 1
             if (-not $targetFile) {
                 Write-Error "No executable file found in the extracted files."
@@ -189,36 +230,40 @@ try {
     }
 
     # Run the determined file with optional arguments
-    if (-not $arg) {
-        Write-Output "Executing the file: $targetFile"
-        Start-Process -FilePath $targetFile -Wait
-    } else {
-        # Replace custom variables in the arguments
-        $arg = $arg -replace "\{tmp\}", [regex]::Escape($env:TEMP)
-        $arg = $arg -replace "\{installdir\}", [regex]::Escape($appFolder)
-
-        Write-Output "Executing the file with arguments: $arg"
-        Start-Process -FilePath $targetFile -ArgumentList $arg -Wait
+    $startArgs = @{
+        FilePath = $targetFile
+        Wait = $true
     }
+    if ($AppArgs) {
+        $AppArgs = $AppArgs -replace "\{tmp\}", [regex]::Escape($env:TEMP)
+        $AppArgs = $AppArgs -replace "\{installdir\}", [regex]::Escape($appFolder)
+        $startArgs.ArgumentList = $AppArgs
+    }
+    if ($AppAdmin) {
+        $startArgs.Verb = "RunAs"
+    }
+    Write-Output "Executing the file: $targetFile"
+    Start-Process @startArgs
+
 } catch {
     Write-Error "An error occurred: $_"
 } finally {
 
     # Optional cleanup step
-    if ($cleanup) {
+    if ($NoCleanup) {
         Write-Output "Cleaning up..."
         Remove-Item -Path $appFolder -Recurse -Force | Out-Null
 
-        # Check if $tmp directory is empty and delete if necessary
-        if ((Test-Path -Path $tmp) -and !(Get-ChildItem -Path $tmp -Recurse | Measure-Object).Count) {
-            Write-Output "Temporary directory is empty. Deleting $tmp..."
-            Remove-Item -Path $tmp -Force | Out-Null
+        # Check if $Tmp directory is empty and delete if necessary
+        if ((Test-Path -Path $Tmp) -and !(Get-ChildItem -Path $Tmp -Recurse | Measure-Object).Count) {
+            Write-Output "Temporary directory is empty. Deleting $Tmp..."
+            Remove-Item -Path $Tmp -Force | Out-Null
         }
     }
 }
 
 # Wait at the end if requested
-if ($wait) {
+if ($Wait) {
     Write-Output "Press Enter to exit..."
     Read-Host
     return

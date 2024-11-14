@@ -26,8 +26,8 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://dl5.oo-software.com/files/ooregeditor12/120/ooregeditor.zip"
-    app = "OORegEdt.exe"
+    Url             = "https://dl5.oo-software.com/files/ooregeditor12/120/ooregeditor.zip"
+    ArchiveApp      = "OORegEdt.exe"
 }
 
 # Download, create, and execute the script block with parameters

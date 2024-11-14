@@ -26,8 +26,8 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://download.sysinternals.com/files/ProcessExplorer.zip"
-    app = "procexp.exe"
+    Url             = "https://download.sysinternals.com/files/ProcessExplorer.zip"
+    ArchiveApp      = "procexp.exe"
 }
 
 # Download, create, and execute the script block with parameters

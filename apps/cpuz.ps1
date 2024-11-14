@@ -26,8 +26,8 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://download.cpuid.com/cpu-z/cpu-z_2.12-en.zip"
-    app = "cpuz_x64.exe"
+    Url             = "https://download.cpuid.com/cpu-z/cpu-z_2.12-en.zip"
+    ArchiveApp      = "cpuz_x64.exe"
 }
 
 # Download, create, and execute the script block with parameters

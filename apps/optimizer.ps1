@@ -26,7 +26,7 @@
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
-    url = "https://github.com/hellzerg/optimizer"
+    Url             = "https://github.com/hellzerg/optimizer"
 }
 
 # Download, create, and execute the script block with parameters
