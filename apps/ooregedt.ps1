@@ -21,8 +21,11 @@
 # O&O RegEditor is an excellent choice for power users and administrators looking for greater flexibility 
 # and ease in managing Windows registry settings.
 
+# To execute the script, run the following command in PowerShell:
+# irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/ooregedt.ps1 | iex
+
 # To create a shortcut for O&O RegEditor, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "O&O - RegEditor.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/ooregedt.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "O&O RegEditor is a powerful alternative to the default Windows registry editor, offering advanced features for easier registry management."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "O&O - RegEditor.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/ooregedt.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "O&O RegEditor is a powerful alternative to the default Windows registry editor, offering advanced features for easier registry management."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
@@ -31,4 +34,4 @@ $params = @{
 }
 
 # Download, create, and execute the script block with parameters
-& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/scripts/downloadrun.ps1").Content)) @params
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/scripts/downloadrun.ps1").Content)) @params

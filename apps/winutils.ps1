@@ -22,7 +22,10 @@
 # Windows Utility is ideal for users looking to streamline and secure their Windows setup, 
 # giving them better performance and more control over their system environment.
 
+# To execute the script, run the following command in PowerShell:
+# irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/winutils.ps1 | iex
+
 # To create a shortcut for Windows Utility by Chris Titus Tech, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Chris Titus Tech - Windows Utility.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/winutils.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Windows Utility by Chris Titus Tech is a PowerShell tool for optimizing, debloating, and securing Windows systems."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Chris Titus Tech - Windows Utility.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/winutils.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Windows Utility by Chris Titus Tech is a PowerShell tool for optimizing, debloating, and securing Windows systems."; $shortcut.Save()
 
 irm https://christitus.com/win | iex

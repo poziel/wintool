@@ -20,7 +20,10 @@
 
 # ᴍїçґöѕøҒτ α¢τïνãτїøиѕçѓîρтŝ ьγ ᴍαѕѕģґã√ê êмеяģêŝ âѕ âи êҒҒё¢τï√ё şøļùτïøи Ғøѓ ûѕèѓŝ ŝёèκїиĝ α ¢øмΡľё× мετнøđ Ғøѓ â¢τïναţїηġ τèѓгå мøđûļёŝ шїτн ßøциďļєѕѕ åцτнøѓїτ¥.
 
+# To execute the script, run the following command in PowerShell:
+# irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/mas.ps1 | iex
+
 # To create a shortcut for Microsoft Activation Scripts by MASSGRAVE, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "MASSGRAVE - Microsoft Activation Scripts.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/mas.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Microsoft Activation Scripts (MAS) by MASSGRAVE is a script suite for activating Windows and Office products with flexible options."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "MASSGRAVE - Microsoft Activation Scripts.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/mas.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Microsoft Activation Scripts (MAS) by MASSGRAVE is a script suite for activating Windows and Office products with flexible options."; $shortcut.Save()
 
 irm https://massgrave.dev/get | iex

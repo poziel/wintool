@@ -21,8 +21,11 @@
 # O&O ShutUp10++ is an essential tool for privacy-conscious users who want to control data-sharing 
 # and tracking features on Windows systems without complex configurations.
 
+# To execute the script, run the following command in PowerShell:
+# irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/oosu10.ps1 | iex
+
 # To create a shortcut for O&O ShutUp10++, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "O&O - ShutUp10++.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/oosu10.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "O&O ShutUp10++ is a privacy tool for Windows that disables telemetry and tracking features to protect user privacy."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "O&O - ShutUp10++.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/oosu10.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "O&O ShutUp10++ is a privacy tool for Windows that disables telemetry and tracking features to protect user privacy."; $shortcut.Save()
 
 # Define parameters to pass as a hashtable (flexible to add/remove parameters)
 $params = @{
@@ -30,4 +33,4 @@ $params = @{
 }
 
 # Download, create, and execute the script block with parameters
-& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/scripts/downloadrun.ps1").Content)) @params
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/scripts/downloadrun.ps1").Content)) @params

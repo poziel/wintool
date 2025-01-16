@@ -18,7 +18,10 @@
 # Block Razer Utility is ideal for users wanting to optimize system performance by preventing 
 # unnecessary Razer software from running in the background.
 
+# To execute the script, run the following command in PowerShell:
+# irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/blockrazer.ps1 | iex
+
 # To create a shortcut for Block Razer Utility Script by Chris Titus Tech, execute the following line in PowerShell:
-# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Chris Titus Tech - Block Razer Utility.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/main/apps/blockrazer.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Block Razer Utility Script by Chris Titus Tech disables Razer Synapse auto-launch and background services for a lighter startup."; $shortcut.Save()
+# $shortcut = (New-Object -ComObject WScript.Shell).CreateShortcut((Join-Path -Path (Get-Location) -ChildPath "Chris Titus Tech - Block Razer Utility.lnk")); $shortcut.TargetPath = "%windir%\System32\WindowsPowerShell\v1.0\powershell.exe"; $shortcut.Arguments = "-ExecutionPolicy Bypass -Command `"Start-Process powershell.exe -verb runas -ArgumentList 'irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/blockrazer.ps1 | iex'`""; $shortcut.WorkingDirectory = "%windir%\System32\WindowsPowerShell\v1.0"; $shortcut.Description = "Block Razer Utility Script by Chris Titus Tech disables Razer Synapse auto-launch and background services for a lighter startup."; $shortcut.Save()
 
 irm https://raw.githubusercontent.com/ChrisTitusTech/block-razer/main/block.ps1 | iex
