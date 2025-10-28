@@ -33,4 +33,4 @@ $params = @{
 }
 
 # Download, create, and execute the script block with parameters
-& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://wintool.poziel.dev/downloadrun").Content)) @params
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://wintool.poziel.dev/commons/downloadrun.ps1").Content)) @params

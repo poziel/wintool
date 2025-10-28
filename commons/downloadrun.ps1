@@ -11,7 +11,7 @@ downloadrun -url "https://github.com/username/repository" -tmp "C:\CustomTemp" -
 Downloads `specificfile.exe` from the latest release of the specified GitHub repo, stores it in "C:\CustomTemp", and executes it.
 
 .EXAMPLE
-& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://wintool.poziel.dev/downloadrun").Content)) @params
+& ([scriptblock]::Create((Invoke-WebRequest -Uri "https://wintool.poziel.dev/commons/downloadrun.ps1").Content)) @params
 Calls the `downloadrun` script remotely with parameters stored in the `@params` hashtable.
 #>
 

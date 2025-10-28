@@ -5,52 +5,77 @@ Perfect for quick diagnostics, optimization, security tasks, and system manageme
 
 ---
 
-## 🛠 Current Available Scripts & Purpose
+## 🎯 Quick Start
 
-Below is the list of scripts currently available in the repository, each matching an existing `.ps1` file. All follow the one-shot execution model:
+### Option 1: Visit the Website
+Browse all tools with descriptions at:
+**[https://wintool.poziel.dev](https://wintool.poziel.dev)**
 
-- **`cleanmgr`** – Launches *Cleanmgr+* for extended disk cleanup options beyond Windows’ built-in tool.  
-- **`cpuz`** – Runs *CPU-Z* for detailed CPU, memory, and motherboard specifications.  
-- **`diskinfo`** – Opens *CrystalDiskInfo* to check drive health and S.M.A.R.T. status.  
-- **`diskmark`** – Runs *CrystalDiskMark* for storage performance benchmarking.  
-- **`envyupdate`** – Updates NVIDIA drivers easily via *EnvyUpdate*.  
-- **`hwinfo`** – Opens *HWiNFO* for full hardware and sensor monitoring.  
-- **`mas`** – Executes *Microsoft Activation Scripts* from Massgrave for licensing tasks.  
-- **`ooapb`** – Runs *O&O AppBuster* to remove or restore Windows preinstalled apps.  
-- **`ooregedt`** – Launches *O&O RegEditor* for an enhanced registry editing experience.  
-- **`oosu10`** – Runs *O&O ShutUp10++* for Windows privacy and telemetry control.  
-- **`optimizer`** – Opens *Optimizer* for system tweaks, startup management, and privacy settings.  
-- **`supermsconfig`** – Runs *Super MSConfig* to manage startup programs and services.  
-- **`unigetui`** – Opens *UniGetUI* for managing software installations via package managers.  
-- **`winutils`** – Launches *Windows Utilities* for quick access to hidden system tools.  
-- **`xdantispy`** – Runs *XDAntiSpy* to adjust Windows privacy and telemetry settings.  
-- **`blockrazer`** – Blocks Razer software auto-installation prompts when plugging in devices.  
-- **`autoruns`** – Opens Microsoft Sysinternals’ *Autoruns* for advanced startup entry management.  
-- **`procexp`** – Runs Microsoft Sysinternals’ *Process Explorer* for detailed process management.  
-- **`procmon`** – Runs Microsoft Sysinternals’ *Process Monitor* for real-time system activity tracing.
+Click "Copy Command" or "One-Click" to get started instantly!
+
+### Option 2: Interactive Menu
+Launch the arrow-based menu in PowerShell:
+
+```powershell
+irm https://wintool.poziel.dev/get | iex
+```
+
+This will:
+- Load the complete tool catalog from `tools.json`
+- Display tools organized by category
+- Let you navigate with arrow keys and launch with Enter
+- No need to remember individual command names!
 
 ---
 
-## ⚙ How to Use (Global Instructions)
+## 🛠 Available Tool Categories
 
-You can execute any WinTool script directly from the repository without downloading the entire repo, using the following PowerShell command:
+WinTool includes utilities across multiple categories:
+
+- **Hardware & Diagnostics** – CPU-Z, HWiNFO, CrystalDiskInfo, CrystalDiskMark
+- **Privacy & Optimization** – O&O ShutUp10++, Optimizer, Cleanmgr+, xd-AntiSpy, SuperMSConfig
+- **Microsoft Sysinternals** – Autoruns, Process Explorer, Process Monitor
+- **System Utilities** – Microsoft Activation Scripts, BlockRazer, Everything, O&O RegEditor
+- **Package Managers** – UniGetUI
+
+**Total: 19 tools and growing!**
+
+View the complete catalog:
+- **Website:** [https://wintool.poziel.dev](https://wintool.poziel.dev)
+- **Interactive Menu:** `irm https://wintool.poziel.dev/get | iex`
+
+---
+
+
+
+## ⚙ How to Use
+
+### Direct Execution
+If you know which tool you want, run it directly:
 
 ```powershell
 irm https://wintool.poziel.dev/<scriptname> | iex
 ```
 
-Replace `<scriptname>` with one of the available scripts listed above.  
-Example for running CPU-Z:
+Replace `<scriptname>` with the tool name (e.g., `cpuz`, `hwinfo`, `optimizer`).
 
+**Example:**
 ```powershell
 irm https://wintool.poziel.dev/cpuz | iex
 ```
 
-By default:
-- The script will **download** the latest portable version of the tool
-- It will **run** it immediately (some tools may prompt for elevation)
-- Once closed, it will **delete all temporary files**  
+### How It Works
+By default, each script will:
+- **Download** the latest portable version of the tool
+- **Run** it immediately (some tools may prompt for elevation)
+- **Delete** all temporary files when you close the tool  
   *(Pass `-NoCleanup` when running the script to skip auto-cleanup)*
+
+### Tool Catalog
+All tool information is centrally managed in `tools.json`, making it easy to:
+- Browse tools on the website
+- Use the interactive PowerShell menu
+- See descriptions, features, and categories in one place
 
 ---
 
@@ -65,10 +90,11 @@ By default:
 
 ## 📌 Roadmap
 
+- [x] Interactive menu to select tools  
 - [ ] Add checksum verification for downloaded files  
-- [ ] Interactive menu to select tools  
 - [ ] Optional silent/auto mode for supported utilities  
 - [ ] Script signing for enterprise environments
+- [ ] Favorites/recently used tools tracking
 
 ---
 
