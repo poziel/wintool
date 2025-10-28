@@ -18,10 +18,10 @@ WinTool is a PowerShell-based collection of one-shot Windows utility scripts tha
 
 ## Domain Configuration
 - Production domain: `https://wintool.poziel.dev/<scriptname>` (without `.ps1` extension)
-- Domain redirects via nginx to: `https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/scripts/<scriptname>.ps1`
+- Domain redirects via nginx to: `https://raw.githubusercontent.com/poziel/wintool/master/scripts/<scriptname>.ps1`
 - Helper scripts: `https://wintool.poziel.dev/commons/downloadrun.ps1` and `https://wintool.poziel.dev/commons/urlsearch.ps1`
 - Interactive menu: `https://wintool.poziel.dev/get`
-- Tool catalog (JSON): `https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/tools.json`
+- Tool catalog (JSON): `https://raw.githubusercontent.com/poziel/wintool/master/tools.json`
 - Web interface: `https://wintool.poziel.dev` (index.html)
 
 ## Tool Catalog Management

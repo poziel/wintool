@@ -27,7 +27,7 @@ param(
 )
 
 # Configuration
-$ToolsJsonUrl = "https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/tools.json"
+$ToolsJsonUrl = "https://raw.githubusercontent.com/poziel/wintool/master/tools.json"
 
 # Function to fetch tools from JSON
 function Get-AllTools {

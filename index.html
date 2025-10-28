@@ -498,7 +498,7 @@
         // Fetch and display tools
         async function loadTools() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/tools.json');
+                const response = await fetch('https://raw.githubusercontent.com/poziel/wintool/master/tools.json');
                 const data = await response.json();
                 toolsData = data;
                 
