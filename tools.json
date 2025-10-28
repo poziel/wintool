@@ -40,7 +40,8 @@
         "Stops and disables Razer services running in the background",
         "Reversible - can re-enable services if needed"
       ],
-      "url": "https://wintool.poziel.dev/blockrazer"
+      "url": "https://wintool.poziel.dev/blockrazer",
+      "website": "https://github.com/ChrisTitusTech/block-razer"
     },
     {
       "name": "cleanmgr",
@@ -55,7 +56,8 @@
         "Modern user-friendly interface with checkboxes",
         "Automation options for scheduled cleanups"
       ],
-      "url": "https://wintool.poziel.dev/cleanmgr"
+      "url": "https://wintool.poziel.dev/cleanmgr",
+      "website": "https://github.com/builtbybel/CleanmgrPlus"
     },
     {
       "name": "cpuz",
@@ -70,7 +72,8 @@
         "Real-time monitoring of CPU core frequencies and voltage",
         "Portable and easy to use"
       ],
-      "url": "https://wintool.poziel.dev/cpuz"
+      "url": "https://wintool.poziel.dev/cpuz",
+      "website": "https://www.cpuid.com/softwares/cpu-z.html"
     },
     {
       "name": "diskinfo",
@@ -85,7 +88,8 @@
         "Customizable alert thresholds for specific attributes",
         "Portable and easy to use"
       ],
-      "url": "https://wintool.poziel.dev/diskinfo"
+      "url": "https://wintool.poziel.dev/diskinfo",
+      "website": "https://crystalmark.info/en/software/crystaldiskinfo/"
     },
     {
       "name": "diskmark",
@@ -100,7 +104,8 @@
         "Customizable test parameters (queue depth, duration)",
         "Portable and thorough performance testing"
       ],
-      "url": "https://wintool.poziel.dev/diskmark"
+      "url": "https://wintool.poziel.dev/diskmark",
+      "website": "https://crystalmark.info/en/software/crystaldiskmark/"
     },
     {
       "name": "everything",
@@ -115,7 +120,8 @@
         "Advanced search operators for complex queries",
         "Bookmarks for frequent searches and export results"
       ],
-      "url": "https://wintool.poziel.dev/everything"
+      "url": "https://wintool.poziel.dev/everything",
+      "website": "https://www.voidtools.com/"
     },
     {
       "name": "hwinfo",
@@ -130,7 +136,8 @@
         "Alert and notification system based on sensor thresholds",
         "Extensive logging options for performance tracking"
       ],
-      "url": "https://wintool.poziel.dev/hwinfo"
+      "url": "https://wintool.poziel.dev/hwinfo",
+      "website": "https://www.hwinfo.com/"
     },
     {
       "name": "mas",
@@ -144,7 +151,8 @@
         "Open-source and community-maintained",
         "Flexible activation options"
       ],
-      "url": "https://wintool.poziel.dev/mas"
+      "url": "https://wintool.poziel.dev/mas",
+      "website": "https://github.com/massgravel/Microsoft-Activation-Scripts"
     },
     {
       "name": "microsoft-autoruns",
@@ -159,7 +167,8 @@
         "Highlights known malware entry points and Microsoft items",
         "Online search for additional details on startup items"
       ],
-      "url": "https://wintool.poziel.dev/microsoft-autoruns"
+      "url": "https://wintool.poziel.dev/microsoft-autoruns",
+      "website": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns"
     },
     {
       "name": "microsoft-procexp",
@@ -174,7 +183,8 @@
         "Search tool to locate which processes use specific files/DLLs",
         "Process killing and suspension options"
       ],
-      "url": "https://wintool.poziel.dev/microsoft-procexp"
+      "url": "https://wintool.poziel.dev/microsoft-procexp",
+      "website": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer"
     },
     {
       "name": "microsoft-procmon",
@@ -189,7 +199,8 @@
         "Save and export captured data for analysis",
         "Stack trace capture for code-level diagnostics"
       ],
-      "url": "https://wintool.poziel.dev/microsoft-procmon"
+      "url": "https://wintool.poziel.dev/microsoft-procmon",
+      "website": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon"
     },
     {
       "name": "ooapb",
@@ -204,7 +215,8 @@
         "Overview of app usage to help decide what to keep",
         "Undo functionality to restore removed apps"
       ],
-      "url": "https://wintool.poziel.dev/ooapb"
+      "url": "https://wintool.poziel.dev/ooapb",
+      "website": "https://www.oo-software.com/en/ooappbuster"
     },
     {
       "name": "ooregedt",
@@ -219,7 +231,8 @@
         "Export and import feature for backup and sharing",
         "History function to track and revisit recent edits"
       ],
-      "url": "https://wintool.poziel.dev/ooregedt"
+      "url": "https://wintool.poziel.dev/ooregedt",
+      "website": "https://www.oo-software.com/en/ooregeditor"
     },
     {
       "name": "oosu10",
@@ -234,7 +247,8 @@
         "Easy rollback of changes to restore defaults",
         "Completely portable - no installation required"
       ],
-      "url": "https://wintool.poziel.dev/oosu10"
+      "url": "https://wintool.poziel.dev/oosu10",
+      "website": "https://www.oo-software.com/en/shutup10"
     },
     {
       "name": "optimizer",
@@ -249,7 +263,8 @@
         "Built-in firewall management tool",
         "Portable and open-source"
       ],
-      "url": "https://wintool.poziel.dev/optimizer"
+      "url": "https://wintool.poziel.dev/optimizer",
+      "website": "https://github.com/hellzerg/optimizer"
     },
     {
       "name": "supermsconfig",
@@ -264,7 +279,8 @@
         "Control over scheduled tasks and system settings",
         "Export and import configurations for easy setup"
       ],
-      "url": "https://wintool.poziel.dev/supermsconfig"
+      "url": "https://wintool.poziel.dev/supermsconfig",
+      "website": "https://github.com/builtbybel/SuperMSConfig"
     },
     {
       "name": "unigetui",
@@ -279,7 +295,8 @@
         "Search functionality to quickly locate applications",
         "Graphical interface alternative to command-line operations"
       ],
-      "url": "https://wintool.poziel.dev/unigetui"
+      "url": "https://wintool.poziel.dev/unigetui",
+      "website": "https://github.com/marticliment/UniGetUI"
     },
     {
       "name": "winutils",
@@ -294,7 +311,8 @@
         "Bulk uninstallation of pre-installed apps",
         "Advanced network and firewall settings"
       ],
-      "url": "https://wintool.poziel.dev/winutils"
+      "url": "https://wintool.poziel.dev/winutils",
+      "website": "https://github.com/ChrisTitusTech/winutil"
     },
     {
       "name": "xdantispy",
@@ -309,7 +327,8 @@
         "Advanced network and firewall settings",
         "Simple checkbox-based interface"
       ],
-      "url": "https://wintool.poziel.dev/xdantispy"
+      "url": "https://wintool.poziel.dev/xdantispy",
+      "website": "https://github.com/builtbybel/xd-AntiSpy"
     }
   ]
 }
