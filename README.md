@@ -36,14 +36,14 @@ Below is the list of scripts currently available in the repository, each matchin
 You can execute any WinTool script directly from the repository without downloading the entire repo, using the following PowerShell command:
 
 ```powershell
-irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/<scriptname>.ps1 | iex
+irm https://wintool.poziel.dev/<scriptname> | iex
 ```
 
 Replace `<scriptname>` with one of the available scripts listed above.  
 Example for running CPU-Z:
 
 ```powershell
-irm https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/apps/cpuz.ps1 | iex
+irm https://wintool.poziel.dev/cpuz | iex
 ```
 
 By default:
