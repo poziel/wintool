@@ -39,8 +39,10 @@ function Get-AllTools {
         
         Write-Host "Found $($response.tools.Count) tools!`n" -ForegroundColor Green
         
-        # Convert to consistent format
+        # Convert to consistent format with category info
         $tools = $response.tools | ForEach-Object {
+            $categoryInfo = $response.categories[$_.category]
+            
             [PSCustomObject]@{
                 Name = $_.name
                 DisplayName = if ($_.vendor) { "$($_.displayName) by $($_.vendor)" } else { $_.displayName }
@@ -48,12 +50,15 @@ function Get-AllTools {
                 Vendor = $_.vendor
                 Description = $_.description
                 Features = $_.features
-                Category = $_.category
+                CategoryKey = $_.category
+                CategoryName = $categoryInfo.name
+                CategoryIcon = $categoryInfo.icon
+                CategoryDescription = $categoryInfo.description
                 Url = $_.url
             }
         }
         
-        return $tools | Sort-Object Category, DisplayName
+        return $tools | Sort-Object CategoryName, DisplayName
         
     } catch {
         Write-Error "Failed to fetch tool catalog: $_"
@@ -66,14 +71,22 @@ function Get-AllTools {
 function Show-ToolList {
     param([array]$Tools)
     
-    $groupedTools = $Tools | Group-Object -Property Category | Sort-Object Name
+    $groupedTools = $Tools | Group-Object -Property CategoryName | Sort-Object Name
     
     Write-Host "`n╔═══════════════════════════════════════════════════════════════════════════╗" -ForegroundColor Cyan
     Write-Host "║                    WinTool - Available Utilities                          ║" -ForegroundColor Cyan
     Write-Host "╚═══════════════════════════════════════════════════════════════════════════╝`n" -ForegroundColor Cyan
     
     foreach ($group in $groupedTools) {
-        Write-Host "`n  ▶ $($group.Name)" -ForegroundColor Yellow
+        $categoryIcon = $group.Group[0].CategoryIcon
+        Write-Host "`n  $categoryIcon $($group.Name)" -ForegroundColor Yellow
+        
+        # Show category description
+        $categoryDesc = $group.Group[0].CategoryDescription
+        if ($categoryDesc) {
+            Write-Host "  $categoryDesc" -ForegroundColor DarkGray
+        }
+        Write-Host ""
         
         foreach ($tool in $group.Group) {
             Write-Host "    • " -NoNewline -ForegroundColor Green
@@ -93,17 +106,19 @@ function Show-ToolList {
 function Show-InteractiveMenu {
     param([array]$Tools)
     
-    $groupedTools = $Tools | Group-Object -Property Category | Sort-Object Name
+    $groupedTools = $Tools | Group-Object -Property CategoryName | Sort-Object Name
     $menuItems = @()
     $selectedIndex = 0
     
     # Build flat menu items list with category headers
     foreach ($group in $groupedTools) {
+        $categoryIcon = $group.Group[0].CategoryIcon
+        
         # Add category header (not selectable)
         $menuItems += [PSCustomObject]@{
             Type = "Header"
-            DisplayName = $group.Name
-            Category = $group.Name
+            DisplayName = "$categoryIcon $($group.Name)"
+            CategoryName = $group.Name
         }
         # Add tools
         foreach ($tool in $group.Group) {
@@ -112,7 +127,7 @@ function Show-InteractiveMenu {
                 DisplayName = $tool.DisplayName
                 Description = $tool.Description
                 Url = $tool.Url
-                Category = $group.Name
+                CategoryName = $group.Name
             }
         }
     }

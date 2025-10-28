@@ -1,12 +1,39 @@
 {
   "version": "1.0",
   "updated": "2025-01-27",
+  "categories": {
+    "hardware": {
+      "name": "Hardware & Diagnostics",
+      "icon": "🔧",
+      "description": "Tools for monitoring, benchmarking, and diagnosing hardware components including CPU, memory, storage, and system sensors."
+    },
+    "privacy": {
+      "name": "Privacy & Optimization",
+      "icon": "🔒",
+      "description": "Utilities to enhance system privacy, disable telemetry, remove bloatware, and optimize Windows performance."
+    },
+    "sysinternals": {
+      "name": "Microsoft Sysinternals",
+      "icon": "🔬",
+      "description": "Advanced system utilities from Microsoft for troubleshooting, monitoring processes, and analyzing system behavior."
+    },
+    "utilities": {
+      "name": "System Utilities",
+      "icon": "⚙️",
+      "description": "Essential system tools for file search, registry editing, activation, and general Windows management."
+    },
+    "packages": {
+      "name": "Package Managers",
+      "icon": "📦",
+      "description": "Graphical interfaces for managing software installations across multiple package managers."
+    }
+  },
   "tools": [
     {
       "name": "blockrazer",
       "displayName": "BlockRazer",
       "vendor": "Chris Titus Tech",
-      "category": "System Utilities",
+      "category": "utilities",
       "description": "Disables automatic launch of Razer Synapse software and related services on Windows, minimizing background resource usage.",
       "features": [
         "Disables startup entries for Razer Synapse",
@@ -19,7 +46,7 @@
       "name": "cleanmgr",
       "displayName": "Cleanmgr+",
       "vendor": "Builtbybel",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Enhanced disk cleanup utility that replaces Windows' built-in tool with additional cleanup options and a modern interface.",
       "features": [
         "All cleanup options from original Disk Cleanup plus customizations",
@@ -34,7 +61,7 @@
       "name": "cpuz",
       "displayName": "CPU-Z",
       "vendor": "CPUID",
-      "category": "Hardware & Diagnostics",
+      "category": "hardware",
       "description": "Lightweight system profiling tool that provides detailed information on CPU, motherboard, memory, and hardware components.",
       "features": [
         "Detailed CPU information: architecture, clock speed, cache levels",
@@ -49,7 +76,7 @@
       "name": "diskinfo",
       "displayName": "CrystalDiskInfo",
       "vendor": "Crystal Dew World",
-      "category": "Hardware & Diagnostics",
+      "category": "hardware",
       "description": "Disk health monitoring tool that provides detailed drive information including temperature, health status, and S.M.A.R.T. attributes.",
       "features": [
         "Monitors health status, temperature, and S.M.A.R.T. info for HDDs/SSDs",
@@ -64,7 +91,7 @@
       "name": "diskmark",
       "displayName": "CrystalDiskMark",
       "vendor": "Crystal Dew World",
-      "category": "Hardware & Diagnostics",
+      "category": "hardware",
       "description": "Disk benchmarking tool that measures read and write speeds of storage devices with detailed performance metrics.",
       "features": [
         "Sequential and random read/write tests",
@@ -79,7 +106,7 @@
       "name": "everything",
       "displayName": "Everything",
       "vendor": "Voidtools",
-      "category": "System Utilities",
+      "category": "utilities",
       "description": "Fast and efficient search utility for Windows that instantly locates files and folders with minimal resource usage.",
       "features": [
         "Instant file indexing with real-time results",
@@ -94,7 +121,7 @@
       "name": "hwinfo",
       "displayName": "HWiNFO",
       "vendor": "HWiNFO",
-      "category": "Hardware & Diagnostics",
+      "category": "hardware",
       "description": "Comprehensive hardware information and diagnostic tool with in-depth system monitoring, sensor data, and reporting.",
       "features": [
         "Detailed information on CPU, GPU, memory, storage",
@@ -109,7 +136,7 @@
       "name": "mas",
       "displayName": "Microsoft Activation Scripts",
       "vendor": "MASSGRAVE",
-      "category": "System Utilities",
+      "category": "utilities",
       "description": "Script suite for activating Windows and Office products with flexible activation options.",
       "features": [
         "Multiple activation methods",
@@ -123,7 +150,7 @@
       "name": "microsoft-autoruns",
       "displayName": "Autoruns",
       "vendor": "Microsoft Sysinternals",
-      "category": "Microsoft Sysinternals",
+      "category": "sysinternals",
       "description": "Powerful utility for managing startup items, allowing users to view, manage, and disable programs and services that run automatically.",
       "features": [
         "Comprehensive lists of startup items: programs, services, drivers, scheduled tasks",
@@ -138,7 +165,7 @@
       "name": "microsoft-procexp",
       "displayName": "Process Explorer",
       "vendor": "Microsoft Sysinternals",
-      "category": "Microsoft Sysinternals",
+      "category": "sysinternals",
       "description": "Advanced task manager utility that provides in-depth insight into active processes and system resource usage.",
       "features": [
         "Hierarchical view of all running processes",
@@ -153,7 +180,7 @@
       "name": "microsoft-procmon",
       "displayName": "Process Monitor",
       "vendor": "Microsoft Sysinternals",
-      "category": "Microsoft Sysinternals",
+      "category": "sysinternals",
       "description": "Real-time monitoring tool that captures detailed events related to file system, registry, and process activity.",
       "features": [
         "Monitors file system, registry, network, and process events",
@@ -168,7 +195,7 @@
       "name": "ooapb",
       "displayName": "O&O AppBuster",
       "vendor": "O&O Software",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Free tool that helps users manage and remove unwanted pre-installed applications and bloatware from Windows 10/11.",
       "features": [
         "Lists all pre-installed apps including hidden and protected system apps",
@@ -183,7 +210,7 @@
       "name": "ooregedt",
       "displayName": "O&O RegEditor",
       "vendor": "O&O Software",
-      "category": "System Utilities",
+      "category": "utilities",
       "description": "Advanced Windows registry editor with enhanced features for better registry management and navigation.",
       "features": [
         "Search, edit, and navigate registry with improved speed",
@@ -198,7 +225,7 @@
       "name": "oosu10",
       "displayName": "O&O ShutUp10++",
       "vendor": "O&O Software",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Privacy-focused utility for Windows that controls and disables telemetry, tracking, and data-sharing features.",
       "features": [
         "Granular options to disable Windows telemetry and data collection",
@@ -213,7 +240,7 @@
       "name": "optimizer",
       "displayName": "Optimizer",
       "vendor": "Hellzerg",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Versatile tool for optimizing Windows systems with options to disable unnecessary services, remove bloatware, and enhance privacy.",
       "features": [
         "Disables telemetry, data collection, background services",
@@ -228,7 +255,7 @@
       "name": "supermsconfig",
       "displayName": "SuperMSConfig",
       "vendor": "Builtbybel",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Advanced system configuration tool that extends MSConfig functionality with more control over startup and services.",
       "features": [
         "In-depth management of startup programs and background services",
@@ -243,7 +270,7 @@
       "name": "unigetui",
       "displayName": "UniGetUI",
       "vendor": "marticliment",
-      "category": "Package Managers",
+      "category": "packages",
       "description": "User interface for managing software packages on Windows in a simplified, visual environment.",
       "features": [
         "Intuitive UI for browsing and installing software packages",
@@ -258,7 +285,7 @@
       "name": "winutils",
       "displayName": "Windows Utility",
       "vendor": "Chris Titus Tech",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Comprehensive PowerShell-based tool to optimize, debloat, and customize Windows systems for better performance and security.",
       "features": [
         "Automated scripts for system cleanup and bloatware removal",
@@ -273,7 +300,7 @@
       "name": "xdantispy",
       "displayName": "xd-AntiSpy",
       "vendor": "Builtbybel",
-      "category": "Privacy & Optimization",
+      "category": "privacy",
       "description": "Privacy tool for Windows that disables telemetry and data collection features for enhanced control over personal data.",
       "features": [
         "Disables Windows telemetry, diagnostics, data-sharing",

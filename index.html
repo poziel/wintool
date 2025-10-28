@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WinTool - One-Shot Windows Utilities</title>
     <style>
-        :root {
+        :root[data-theme="dark"] {
             --bg-primary: #0d1117;
             --bg-secondary: #161b22;
             --bg-tertiary: #21262d;
@@ -16,6 +16,19 @@
             --accent-green: #3fb950;
             --accent-yellow: #d29922;
             --accent-purple: #bc8cff;
+        }
+        
+        :root[data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-tertiary: #eaeef2;
+            --border-color: #d0d7de;
+            --text-primary: #24292f;
+            --text-secondary: #57606a;
+            --accent-blue: #0969da;
+            --accent-green: #1a7f37;
+            --accent-yellow: #9a6700;
+            --accent-purple: #8250df;
         }
 
         a {
@@ -41,6 +54,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
         
         .container {
@@ -53,6 +67,38 @@
             text-align: center;
             padding: 60px 20px;
             border-bottom: 1px solid var(--border-color);
+        }
+        
+        .header-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .toggle-btn:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-tertiary);
+        }
+        
+        .toggle-btn.active {
+            background: var(--accent-blue);
+            color: white;
+            border-color: var(--accent-blue);
         }
         
         h1 {
@@ -85,6 +131,11 @@
             font-size: 1.5em;
         }
         
+        .quick-start-content {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
         .code-block {
             background: var(--bg-tertiary);
             border: 1px solid var(--border-color);
@@ -95,16 +146,17 @@
             font-size: 0.9em;
             position: relative;
             overflow-x: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .code-block code {
             color: var(--accent-blue);
+            flex: 1;
         }
         
         .copy-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
@@ -113,10 +165,13 @@
             cursor: pointer;
             font-size: 0.85em;
             transition: all 0.2s;
+            white-space: nowrap;
+            margin-left: 10px;
         }
         
         .copy-btn:hover {
             background: var(--accent-blue);
+            color: white;
             border-color: var(--accent-blue);
         }
         
@@ -140,8 +195,16 @@
         .category-title {
             font-size: 1.8em;
             color: var(--accent-yellow);
+            flex: 1;
         }
         
+        .category-description {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        /* Card View */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -161,6 +224,48 @@
             border-color: var(--accent-blue);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
+        }
+        
+        /* List View */
+        .tools-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .tool-list-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease;
+        }
+        
+        .tool-list-item:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-tertiary);
+        }
+        
+        .tool-list-info {
+            flex: 1;
+        }
+        
+        .tool-list-item .tool-name {
+            font-size: 1.1em;
+            margin-bottom: 3px;
+        }
+        
+        .tool-list-item .tool-description {
+            font-size: 0.9em;
+            margin-bottom: 0;
+        }
+        
+        .tool-list-item .btn {
+            min-width: 120px;
         }
         
         .tool-header {
@@ -231,17 +336,6 @@
             background: #2ea043;
         }
         
-        .btn-secondary {
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--accent-blue);
-            background: var(--bg-secondary);
-        }
-        
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -254,6 +348,7 @@
             display: flex;
             justify-content: center;
             gap: 40px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
         
@@ -283,6 +378,15 @@
             .stats {
                 gap: 20px;
             }
+            
+            .tool-list-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .tool-list-item .btn {
+                width: 100%;
+            }
         }
         
         .toast {
@@ -304,10 +408,25 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="header-controls">
+            <button class="toggle-btn" id="view-toggle" onclick="toggleView()">
+                <span id="view-icon">📋</span>
+                <span id="view-text">List View</span>
+            </button>
+            <button class="toggle-btn" id="theme-toggle" onclick="toggleTheme()">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-text">Light Mode</span>
+            </button>
+        </div>
+        
         <header>
             <h1>⚡ WinTool</h1>
             <p class="subtitle">One-Shot Windows Utilities - No Install, No Clutter</p>
@@ -318,7 +437,7 @@
                     <div class="stat-label">Available Tools</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="category-count">6</div>
+                    <div class="stat-value" id="category-count">5</div>
                     <div class="stat-label">Categories</div>
                 </div>
             </div>
@@ -326,112 +445,69 @@
         
         <div class="quick-start">
             <h2>🚀 Quick Start</h2>
-            <p style="margin-bottom: 15px;">Launch the interactive menu to browse all tools:</p>
+            <div class="quick-start-content">
+                <p><strong>Option 1: Interactive PowerShell Menu</strong></p>
+                <p>Browse all tools with arrow-key navigation:</p>
+            </div>
             <div class="code-block">
                 <code>irm https://wintool.poziel.dev/get | iex</code>
                 <button class="copy-btn" onclick="copyToClipboard('irm https://wintool.poziel.dev/get | iex')">Copy</button>
             </div>
-            <p style="margin-top: 20px; margin-bottom: 10px;">Or run any tool directly:</p>
+            
+            <div class="quick-start-content" style="margin-top: 20px;">
+                <p><strong>Option 2: Direct Execution</strong></p>
+                <p>Run any tool directly if you know its name:</p>
+            </div>
             <div class="code-block">
                 <code>irm https://wintool.poziel.dev/&lt;toolname&gt; | iex</code>
                 <button class="copy-btn" onclick="copyToClipboard('irm https://wintool.poziel.dev/')">Copy</button>
+            </div>
+            
+            <div class="quick-start-content" style="margin-top: 20px;">
+                <p><strong>How it works:</strong></p>
+                <ul style="margin-left: 20px; color: var(--text-secondary);">
+                    <li>Downloads the latest portable version of the tool</li>
+                    <li>Runs it immediately (some tools may require elevation)</li>
+                    <li>Automatically removes all temporary files when closed</li>
+                    <li>No permanent installation or system clutter</li>
+                </ul>
             </div>
         </div>
         
         <div id="tools-container"></div>
         
         <footer>
-            <span>Made with ♥️ by <a href="https://poziel.com/" target="_blank">Pøziel</a> from <a href="https://en.wikipedia.org/wiki/Quebec" target="_blank">Québec</a> 🍁</span>
-            - <span style="margin-top: 10px;">
+            <p>WinTool - Portable Windows utilities on demand</p>
+            <p style="margin-top: 10px;">
                 <a href="https://github.com/poziel/wintool">GitHub Repository</a>
-            </span>
+            </p>
         </footer>
     </div>
     
     <div id="toast" class="toast"></div>
     
     <script>
+        let viewMode = 'card'; // 'card' or 'list'
+        let toolsData = null;
+        
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeButton();
+        
         // Fetch and display tools
         async function loadTools() {
             try {
                 const response = await fetch('https://raw.githubusercontent.com/poziel/wintool/refs/heads/master/tools.json');
                 const data = await response.json();
+                toolsData = data;
                 
                 // Update stats
                 document.getElementById('tool-count').textContent = data.tools.length;
-                const categories = new Set(data.tools.map(t => t.category));
-                document.getElementById('category-count').textContent = categories.size;
+                document.getElementById('category-count').textContent = Object.keys(data.categories).length;
                 
-                // Group tools by category
-                const grouped = {};
-                data.tools.forEach(tool => {
-                    if (!grouped[tool.category]) {
-                        grouped[tool.category] = [];
-                    }
-                    grouped[tool.category].push(tool);
-                });
-                
-                // Category icons
-                const categoryIcons = {
-                    'Hardware & Diagnostics': '🔧',
-                    'Privacy & Optimization': '🔒',
-                    'Microsoft Sysinternals': '🔬',
-                    'System Utilities': '⚙️',
-                    'Package Managers': '📦',
-                    'O&O Software': '🛡️'
-                };
-                
-                // Render categories and tools
-                const container = document.getElementById('tools-container');
-                Object.keys(grouped).sort().forEach(category => {
-                    const categoryDiv = document.createElement('div');
-                    categoryDiv.className = 'category';
-                    
-                    const header = document.createElement('div');
-                    header.className = 'category-header';
-                    header.innerHTML = `
-                        <span class="category-icon">${categoryIcons[category] || '📁'}</span>
-                        <h2 class="category-title">${category}</h2>
-                    `;
-                    categoryDiv.appendChild(header);
-                    
-                    const grid = document.createElement('div');
-                    grid.className = 'tools-grid';
-                    
-                    grouped[category].forEach(tool => {
-                        const card = document.createElement('div');
-                        card.className = 'tool-card';
-                        
-                        const displayName = tool.vendor ? `${tool.displayName}` : tool.displayName;
-                        const vendor = tool.vendor ? `by ${tool.vendor}` : '';
-                        
-                        const features = tool.features && tool.features.length > 0
-                            ? tool.features.slice(0, 3).map(f => `<div class="feature">${f}</div>`).join('')
-                            : '';
-                        
-                        card.innerHTML = `
-                            <div class="tool-header">
-                                <div class="tool-name">${displayName}</div>
-                                ${vendor ? `<div class="tool-vendor">${vendor}</div>` : ''}
-                            </div>
-                            <div class="tool-description">${tool.description}</div>
-                            ${features ? `<div class="tool-features">${features}</div>` : ''}
-                            <div class="tool-actions">
-                                <button class="btn btn-primary" onclick="copyCommand('${tool.name}')">
-                                    📋 Copy Command
-                                </button>
-                                <button class="btn btn-secondary" onclick="copyOneClick('${tool.url}')">
-                                    ⚡ One-Click
-                                </button>
-                            </div>
-                        `;
-                        
-                        grid.appendChild(card);
-                    });
-                    
-                    categoryDiv.appendChild(grid);
-                    container.appendChild(categoryDiv);
-                });
+                // Render tools
+                renderTools();
                 
             } catch (error) {
                 console.error('Error loading tools:', error);
@@ -441,6 +517,102 @@
                     </div>
                 `;
             }
+        }
+        
+        function renderTools() {
+            if (!toolsData) return;
+            
+            // Group tools by category
+            const grouped = {};
+            toolsData.tools.forEach(tool => {
+                if (!grouped[tool.category]) {
+                    grouped[tool.category] = [];
+                }
+                grouped[tool.category].push(tool);
+            });
+            
+            // Render categories and tools
+            const container = document.getElementById('tools-container');
+            container.innerHTML = '';
+            
+            Object.keys(toolsData.categories).forEach(categoryKey => {
+                const category = toolsData.categories[categoryKey];
+                const tools = grouped[categoryKey] || [];
+                
+                if (tools.length === 0) return;
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.innerHTML = `
+                    <span class="category-icon">${category.icon}</span>
+                    <div style="flex: 1;">
+                        <h2 class="category-title">${category.name}</h2>
+                        <div class="category-description">${category.description}</div>
+                    </div>
+                `;
+                categoryDiv.appendChild(header);
+                
+                const toolsContainer = document.createElement('div');
+                toolsContainer.className = viewMode === 'card' ? 'tools-grid' : 'tools-list';
+                
+                tools.forEach(tool => {
+                    const toolElement = viewMode === 'card' ? createToolCard(tool) : createToolListItem(tool);
+                    toolsContainer.appendChild(toolElement);
+                });
+                
+                categoryDiv.appendChild(toolsContainer);
+                container.appendChild(categoryDiv);
+            });
+        }
+        
+        function createToolCard(tool) {
+            const card = document.createElement('div');
+            card.className = 'tool-card';
+            
+            const displayName = tool.vendor ? `${tool.displayName}` : tool.displayName;
+            const vendor = tool.vendor ? `by ${tool.vendor}` : '';
+            
+            const features = tool.features && tool.features.length > 0
+                ? tool.features.slice(0, 3).map(f => `<div class="feature">${f}</div>`).join('')
+                : '';
+            
+            card.innerHTML = `
+                <div class="tool-header">
+                    <div class="tool-name">${displayName}</div>
+                    ${vendor ? `<div class="tool-vendor">${vendor}</div>` : ''}
+                </div>
+                <div class="tool-description">${tool.description}</div>
+                ${features ? `<div class="tool-features">${features}</div>` : ''}
+                <div class="tool-actions">
+                    <button class="btn btn-primary" onclick="copyCommand('${tool.name}')">
+                        📋 Copy Command
+                    </button>
+                </div>
+            `;
+            
+            return card;
+        }
+        
+        function createToolListItem(tool) {
+            const item = document.createElement('div');
+            item.className = 'tool-list-item';
+            
+            const displayName = tool.vendor ? `${tool.displayName} by ${tool.vendor}` : tool.displayName;
+            
+            item.innerHTML = `
+                <div class="tool-list-info">
+                    <div class="tool-name">${displayName}</div>
+                    <div class="tool-description">${tool.description}</div>
+                </div>
+                <button class="btn btn-primary" onclick="copyCommand('${tool.name}')">
+                    📋 Copy Command
+                </button>
+            `;
+            
+            return item;
         }
         
         function copyToClipboard(text) {
@@ -454,11 +626,6 @@
             copyToClipboard(command);
         }
         
-        function copyOneClick(url) {
-            const command = `irm ${url} | iex`;
-            copyToClipboard(command);
-        }
-        
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -466,6 +633,49 @@
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 2000);
+        }
+        
+        function toggleView() {
+            viewMode = viewMode === 'card' ? 'list' : 'card';
+            const icon = document.getElementById('view-icon');
+            const text = document.getElementById('view-text');
+            const btn = document.getElementById('view-toggle');
+            
+            if (viewMode === 'list') {
+                icon.textContent = '📋';
+                text.textContent = 'List View';
+                btn.classList.add('active');
+            } else {
+                icon.textContent = '🗂️';
+                text.textContent = 'Card View';
+                btn.classList.remove('active');
+            }
+            
+            renderTools();
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeButton();
+        }
+        
+        function updateThemeButton() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (theme === 'dark') {
+                icon.textContent = '☀️';
+                text.textContent = 'Light Mode';
+            } else {
+                icon.textContent = '🌙';
+                text.textContent = 'Dark Mode';
+            }
         }
         
         // Load tools on page load
